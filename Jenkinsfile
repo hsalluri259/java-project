@@ -1,14 +1,24 @@
 pipeline {
-  agent master
+  agent any
+  options{
+    buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '1'))
+  }
   stages {
-    stage ('WRITE'){
-      echo "Build Number: $BUILD_NUMBER" >> build_number
+    stage('Build') {
+      steps{
+        sh 'ant -f build.xml -v'
+      }
     }
-    stage ('READ'){
-      echo "Reading build number file: $build_number"
+    stage('Unit Test') {
+      steps {
+        sh 'ant -f test.xml -v'
+        junit 'reports/result.xml'
+      }
     }
   }
   post {
-    archiveArtifacts artifacts: 'build_number', fingerprint: true
+    always{
+      archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true	
+    }
   }
-} 
+}
