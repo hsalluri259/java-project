@@ -1,11 +1,20 @@
 pipeline {
   agent none
   stages {
-    stage ('WRITE'){
-      sh 'echo "Build Number: $BUILD_NUMBER" >> build_number'
+    stage('PRINT'){
+      steps {
+        sh 'echo "Job_Name: $JOB_NAME"'
+      }
     }
-    stage ('READ'){
-      echo "Reading build number file: $build_number"
+    stage('WRITE'){
+      steps {
+        sh 'echo "Build Number: $BUILD_NUMBER" >> build_number'
+      }
+    }
+    stage('READ'){
+      steps {
+         echo "Reading build number file: $build_number"
+      }
     }
   }
   post {
