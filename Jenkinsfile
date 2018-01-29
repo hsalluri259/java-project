@@ -1,5 +1,5 @@
 pipeline {
-  agent master
+  agent none
   stages {
     stage ('WRITE'){
       echo "Build Number: $BUILD_NUMBER" >> build_number
