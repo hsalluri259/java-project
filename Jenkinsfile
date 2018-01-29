@@ -1,9 +1,6 @@
 pipeline {
   agent master
   stages {
-    stage ('PRINT'){
-      echo "JOb Name: $JOB_NAME"
-    }
     stage ('WRITE'){
       echo "Build Number: $BUILD_NUMBER" >> build_number
     }
