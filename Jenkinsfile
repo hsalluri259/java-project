@@ -2,7 +2,7 @@ pipeline {
   agent none
   stages {
     stage ('WRITE'){
-      echo "Build Number: $BUILD_NUMBER" >> build_number
+      sh 'echo "Build Number: $BUILD_NUMBER" >> build_number'
     }
     stage ('READ'){
       echo "Reading build number file: $build_number"
