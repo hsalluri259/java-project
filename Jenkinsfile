@@ -20,7 +20,7 @@ pipeline {
     }
   }
   post {
-    always {
+    success {
       archiveArtifacts artifacts: 'build_number', fingerprint: true
     }
   }
