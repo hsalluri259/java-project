@@ -1,11 +1,14 @@
 pipeline {
-  agent any
-
+  agent master
   stages {
-    stage('Build') {
-      steps {
-        sh 'ant -f build.xml -v'
-      }
+    stage ('WRITE'){
+      echo "Build Number: $BUILD_NUMBER" >> build_number
+    }
+    stage ('READ'){
+      echo "Reading build number file: $build_number"
     }
   }
-}
+  post {
+    archiveArtifacts artifacts: 'build_number', fingerprint: true
+  }
+} 
