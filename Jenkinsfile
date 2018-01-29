@@ -18,6 +18,8 @@ pipeline {
     }
   }
   post {
-    archiveArtifacts artifacts: 'build_number', fingerprint: true
+    always {
+      archiveArtifacts artifacts: 'build_number', fingerprint: true
+    }
   }
 } 
