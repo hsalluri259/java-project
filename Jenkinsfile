@@ -36,11 +36,11 @@ pipeline {
     }
     stage('Running on CentOS') {
       agent {
-        label 'Linux'
+        label 'CentOS'
       }
       steps {
-        sh "wget http://hsalluri2591.mylabserver.com/rectangles/all/rectangle_${env_BUILD_NUMBER}.jar"
-        sh "java -jar rectangle_${env_BUILD_NUMBER}.jar 3 4"
+        sh "wget http://hsalluri2591.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
       }
     }
 
