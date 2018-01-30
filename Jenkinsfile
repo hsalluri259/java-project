@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Notification Time') {
       steps {
-        echo "Notification time: ${DATE}"
+        echo "Notification time:"
       }
        
     }
