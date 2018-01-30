@@ -19,7 +19,7 @@ pipeline {
         echo "My Branch Name: ${env.BRANCH_NAME}"
         script {
           def myLib = new organization.git.gitStuff();
-          echo "My Commit: ${myLib.gitCommit("${env.WORKSPACE/.git}")}"
+          echo "My Commit: ${myLib.gitCommit("${env.WORKSPACE}/.git")}"
         }
         
       } 
