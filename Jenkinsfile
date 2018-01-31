@@ -123,8 +123,10 @@ pipeline {
     failure {
       emailext(
         subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] failed!",
-        body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed!":</p>
-        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+       /* body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed!":</p>
+        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",*/
+        body: """
+        '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Ran!": Check console output at ${env.JOB_NAME} [${env.BUILD_NUMBER}]/a> """,
         to: "hsalluri259@gmail.com"
       )
     }
